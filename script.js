@@ -158,6 +158,45 @@ const r1 = new Rectangle(4, 5, 'blue', false);
 console.log('Rectangle area:', r1.getArea());
 console.log('Rectangle perimeter:', r1.getPerimeter());
 
+//6
+class Person {
+    #name; #address;
+    constructor(name, address) { this.#name = name; this.#address = address; }
+    getName() { return this.#name; }
+    setName(n) { this.#name = n; }
+    getAddress() { return this.#address; }
+    setAddress(a) { this.#address = a; }
+}
+class Student extends Person {
+    #faculty; #year; #university;
+    constructor(name, address, faculty, year, university) {
+        super(name, address);
+        this.#faculty = faculty; this.#year = year; this.#university = university;
+    }
+    getFaculty() { return this.#faculty; }
+    setFaculty(f) { this.#faculty = f; }
+    getYear() { return this.#year; }
+    setYear(y) { this.#year = y; }
+    getUniversity() { return this.#university; }
+    setUniversity(u) { this.#university = u; }
+}
+class Employee extends Person { 
+    #salary; #work;
+    constructor(name, address, salary, work) {
+        super(name, address);
+        this.#salary = salary; this.#work = work;
+    }
+    getSalary() { return this.#salary; }
+    setSalary(s) { this.#salary = s; }
+    getWork() { return this.#work; }
+    setWork(w) { this.#work = w; }
+}
+
+const st = new Student('Ali', 'Tashkent', 'CS', 2, 'TATU');
+console.log('Student:', st.getName(), st.getUniversity(), st.getFaculty()); 
+const emp6 = new Employee('Vali', 'Samarkand', 3000, 'Engineer');
+console.log('Employee (task6):', emp6.getName(), emp6.getWork(), emp6.getSalary());
+
 
 
 
