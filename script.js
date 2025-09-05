@@ -51,5 +51,27 @@ console.log('Full name: ', emp.getFullName());
 console.log('Annual salary: ', emp.getAnnualSalary());
 console.log('Raised salary 25%: ', emp.raiseSalary(25));
 //3
+class CustomDate {
+    #day; #month; #year;
+    constructor(day, month, year) {
+        this.setDay(day);
+        this.setMonth(month);
+        this.setYear(year);
+    }
+    getDay() { return this.#day; }
+    getMonth() { return this.#month; } 
+    getYear() { return this.#year; }
+    setDay(d) {if (m<1 || m>31) throw new RangeError('day 1..31'); this.#day = d;}
+    setMonth(m) {if (m<1 || m>12) throw new RangeError('month 1..12'); this.#month = m;}
+    setYear(y){this.#year = y; }
+    getISODate() {
+        const dd = String(this.#day).padStart(2, '0');
+        const mm = String(this.#month).padStart(2, '0');
+        const yyyy = String(this.#year).padStart(4, '0');
+        return `${dd}-${mm}-${yyyy}`;
+    }
 
+}
+const date = new CustomDate(5, 6, 2024);
+console.log('ISO date: ', date.getISODate());
 
