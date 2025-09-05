@@ -289,5 +289,50 @@ console.log('max:', Array.max(nums));
 console.log('min:', Array.min(nums));
 
 
+//10
+class PersonWealth {
+    constructor({ housePrice = 0, housesNumber = 0, carPrice = 0, carsNumber = 0, bankAccount = 0 } = {}) {
+        this.housePrice = housePrice;
+        this.housesNumber = housesNumber;
+        this.carPrice = carPrice;
+        this.carsNumber = carsNumber;
+        this.bankAccount = bankAccount;
+    }
+    getWealth() {
+        return (this.housePrice * this.housesNumber) +
+            (this.carPrice * this.carsNumber) +
+            this.bankAccount;
+    }
+}
+class RichPerson extends PersonWealth {
+    constructor(options = {}) {
+        super(options);
+        const { companyPrice = 0, companiesNumber = 0, inheritance = 0 } = options; 
+        this.companyPrice = companyPrice;
+        this.companiesNumber = companiesNumber;
+        this.inheritance = inheritance;
+    }
+    
+    getWealth() {
+        const base = super.getWealth();
+        const companies = this.companyPrice * this.companiesNumber;
+        return base + companies + this.inheritance;
+    }
+}
 
+const pWealth = new PersonWealth({
+    housePrice: 100_000, housesNumber: 2,
+    carPrice: 20_000, carsNumber: 1,
+    bankAccount: 15_000
+});
+console.log('PersonWealth total:', pWealth.getWealth()); 
+
+const rich = new RichPerson({
+    housePrice: 200_000, housesNumber: 3,
+    carPrice: 80_000, carsNumber: 2,
+    bankAccount: 50_000,
+    companyPrice: 1_000_000, companiesNumber: 2,
+    inheritance: 250_000
+});
+console.log('RichPerson total:', rich.getWealth());
 
