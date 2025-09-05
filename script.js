@@ -109,3 +109,55 @@ class Time {
 const tm = new Time(6, 20, 10);
 console.log('Next second:', tm.nextSecond());     
 console.log('Previous second:', tm.previousSecond()); 
+//5
+class Shape {
+    #color; #filled;
+    constructor(color = 'black', filled = true) {
+        this.#color = color;
+        this.#filled=!!filled;
+    }
+    getColor() { return this.#color; }
+    setColor(c) { this.#color = c; }
+    isFilled() { return this.#filled; }
+    setFilled(f) { this.#filled = !!f; }
+}
+class Circle extends Shape {
+    #radius;
+    constructor(radius = 1, color = 'black', filled = true) {
+        super(color, filled);
+        if(radius<0) throw new RangeError('radius >= 0');
+        this.#radius = radius;
+    }
+    getRadius() { return this.#radius; }
+    setRadius(r) { if(r<0) throw new RangeError('radius >= 0'); this.#radius = r; }
+    getArea() { return Math.PI * this.#radius * this.#radius; }
+    getPerimeter() { return 2 * Math.PI * this.#radius; }
+ }
+
+class Rectangle extends Shape {
+    #width; #height;
+    constructor(width = 1, height = 1, color = 'black', filled = true) {
+        super(color, filled);
+        if (width < 0 || height < 0) throw new RangeError('width, height >= 0');
+        this.#width = width;
+        this.#height = height;
+    }
+    getWidth() { return this.#width; }
+    setWidth(w) { if (w < 0) throw new RangeError('width >= 0'); this.#width = w; }
+    getHeight() { return this.#height; }
+    setHeight(h) { if (h < 0) throw new RangeError('height >= 0'); this.#height = h; }
+    getArea() { return this.#width * this.#height; }
+    getPerimeter() { return 2 * (this.#width + this.#height); }
+}
+
+const c1 = new Circle(3, 'red', true);
+console.log('Circle area:', c1.getArea().toFixed(2));
+console.log('Circle perimeter:', c1.getPerimeter().toFixed(2));
+
+const r1 = new Rectangle(4, 5, 'blue', false);
+console.log('Rectangle area:', r1.getArea());
+console.log('Rectangle perimeter:', r1.getPerimeter());
+
+
+
+
