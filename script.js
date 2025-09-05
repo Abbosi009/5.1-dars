@@ -1,3 +1,4 @@
+//1
 class Triangle {
     #leftside;
     #rightside;
@@ -20,3 +21,4 @@ const t = new Triangle(3, 4, 5);
 console.log('Triangle: ', t.getLeftSide(), t.getRightSide(), t.getWidth()   );
 t.setSides(7, 8, 9);
 console.log('Triangle after set: ', t.getLeftSide(), t.getRightSide(), t.getWidth()   );
+// 2
