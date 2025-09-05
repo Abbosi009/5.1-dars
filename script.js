@@ -72,6 +72,40 @@ class CustomDate {
     }
 
 }
-const date = new CustomDate(5, 6, 2024);
+const d = new CustomDate(12, 5, 2023);
 console.log('ISO date: ', date.getISODate());
+//4
+class Time {
+    #hour; #minute; #second;
+    constructor(h = 0, m = 0, s = 0) { this.setHour(h); this.setMinute(m); this.setSecond(s); }
+    getHour() { return this.#hour; }
+    getMinute() { return this.#minute; }
+    getSecond() { return this.#second; }
+    setHour(h) { if (h < 0 || h > 23) throw new RangeError('hour 0..23'); this.#hour = h; }
+    setMinute(m) { if (m < 0 || m > 59) throw new RangeError('minute 0..59'); this.#minute = m; }
+    setSecond(s) { if (s < 0 || s > 59) throw new RangeError('second 0..59'); this.#second = s; }
+    #fmt() {
+        const HH = String(this.#hour).padStart(2, '0');
+        const MM = String(this.#minute).padStart(2, '0');
+        const SS = String(this.#second).padStart(2, '0');
+        return `${HH}:${MM}:${SS}`;
+    }
+    nextSecond() {
+        this.#second++;
+        if (this.#second >= 60) { this.#second = 0; this.#minute++; }
+        if (this.#minute >= 60) { this.#minute = 0; this.#hour++; }
+        if (this.#hour >= 24) { this.#hour = 0; }
+        return this.#fmt();
+    }
+    previousSecond() {
+        this.#second--;
+        if (this.#second < 0) { this.#second = 59; this.#minute--; }
+        if (this.#minute < 0) { this.#minute = 59; this.#hour--; }
+        if (this.#hour < 0) { this.#hour = 23; }
+        return this.#fmt();
+    }
+}
 
+const tm = new Time(6, 20, 10);
+console.log('Next second:', tm.nextSecond());     
+console.log('Previous second:', tm.previousSecond()); 
