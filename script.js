@@ -262,6 +262,32 @@ console.log('Number.customIsInteger(5.0):', Number.customIsInteger(5.0));
 console.log('Array.customIsArray([]):', Array.customIsArray([])); 
 
 
+//9
+Array.isNumberArray = function (arr) {
+    if (!Array.isArray(arr)) throw new TypeError('Not an array');
+    const ok = arr.every(x => typeof x === 'number' && !Number.isNaN(x));
+    if (!ok) throw new TypeError('Array must contain only valid numbers');
+    return true;
+};
+Array.sum = function (arr) {
+    Array.isNumberArray(arr);
+    return arr.reduce((s, x) => s + x, 0);
+};
+Array.max = function (arr) {
+    Array.isNumberArray(arr);
+    return arr.reduce((m, x) => x > m ? x : m, -Infinity);
+};
+Array.min = function (arr) {
+    Array.isNumberArray(arr);
+    return arr.reduce((m, x) => x < m ? x : m, Infinity);
+};
+
+const nums = [3, 10, -5, 8];
+console.log('isNumberArray:', Array.isNumberArray(nums)); 
+console.log('sum:', Array.sum(nums));
+console.log('max:', Array.max(nums)); 
+console.log('min:', Array.min(nums));
+
 
 
 
