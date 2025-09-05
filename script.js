@@ -231,6 +231,36 @@ console.log('Cat legs & sound:', cat.getLegs(), cat.getSound());
 const shark = new Shark('Great White', 40, 1100, 'Large');
 console.log('Shark size & sound:', shark.getSize(), shark.getSound()); 
 
+//8
+Object.customKeys = function (obj) {
+    const keys = [];
+    for (const k in obj) if (Object.prototype.hasOwnProperty.call(obj, k)) keys.push(k);
+    return keys;
+};
+Object.customValues = function (obj) {
+    const vals = [];
+    for (const k in obj) if (Object.prototype.hasOwnProperty.call(obj, k)) vals.push(obj[k]);
+    return vals;
+};
+Object.customEntries = function (obj) {
+    const ents = [];
+    for (const k in obj) if (Object.prototype.hasOwnProperty.call(obj, k)) ents.push([k, obj[k]]);
+    return ents;
+};
+Number.customIsInteger = function (val) {
+    return typeof val === 'number' && isFinite(val) && Math.floor(val) === val;
+};
+Array.customIsArray = function (val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+};
+
+const oTest = { a: 1, b: 2 };
+console.log('customKeys:', Object.customKeys(oTest));       
+console.log('customValues:', Object.customValues(oTest));   
+console.log('customEntries:', Object.customEntries(oTest)); 
+console.log('Number.customIsInteger(5.0):', Number.customIsInteger(5.0)); 
+console.log('Array.customIsArray([]):', Array.customIsArray([])); 
+
 
 
 
