@@ -61,7 +61,7 @@ class CustomDate {
     getDay() { return this.#day; }
     getMonth() { return this.#month; } 
     getYear() { return this.#year; }
-    setDay(d) {if (m<1 || m>31) throw new RangeError('day 1..31'); this.#day = d;}
+    setDay(d) { if (d < 1 || d > 31) throw new RangeError('day 1..31'); this.#day = d; }
     setMonth(m) {if (m<1 || m>12) throw new RangeError('month 1..12'); this.#month = m;}
     setYear(y){this.#year = y; }
     getISODate() {
@@ -73,7 +73,7 @@ class CustomDate {
 
 }
 const d = new CustomDate(12, 5, 2023);
-console.log('ISO date: ', date.getISODate());
+console.log('ISO date: ', d.getISODate());
 //4
 class Time {
     #hour; #minute; #second;
