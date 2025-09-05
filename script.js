@@ -197,6 +197,41 @@ console.log('Student:', st.getName(), st.getUniversity(), st.getFaculty());
 const emp6 = new Employee('Vali', 'Samarkand', 3000, 'Engineer');
 console.log('Employee (task6):', emp6.getName(), emp6.getWork(), emp6.getSalary());
 
+//7
+class Animal {
+    constructor(name, speed, weight) { this.name = name; this.speed = speed; this.weight = weight; }
+}
+class Mammal extends Animal {
+    #legs;
+    constructor(name, speed, weight, legs) { super(name, speed, weight); this.#legs = legs; }
+    getLegs() { return this.#legs; }
+    setLegs(l) { this.#legs = l; }
+}
+class Cat extends Mammal {
+    getSound() { return 'Meow'; }
+}
+class Dog extends Mammal {
+    getSound() { return 'Woof'; }
+}
+class Fish extends Animal {
+    #size;
+    constructor(name, speed, weight, size) { super(name, speed, weight); this.#size = size; }
+    getSize() { return this.#size; }
+    setSize(s) { this.#size = s; }
+}
+class Whale extends Fish {
+    getSound() { return 'Poof'; }
+}
+class Shark extends Fish {
+    getSound() { return 'Sheef'; }
+}
+
+const cat = new Cat('Misha', 20, 4, 4);
+console.log('Cat legs & sound:', cat.getLegs(), cat.getSound()); 
+const shark = new Shark('Great White', 40, 1100, 'Large');
+console.log('Shark size & sound:', shark.getSize(), shark.getSound()); 
+
+
 
 
 
